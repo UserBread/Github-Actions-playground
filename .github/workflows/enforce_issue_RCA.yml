@@ -1,0 +1,29 @@
+name: Enforce Issue RCA
+
+# Runs whenever an issue is closed
+on:
+  issues:
+    types:
+      - closed
+
+# Defines the job
+jobs:
+
+  # Job for reopening issues based on a criteria
+  # Criteria:
+    # Has either a "bug-priority:high", "bug-priority:very-high" or "type:regression"
+    # Has missing sections or placeholders from the Root Cause Analysis (RCA) template
+  reopen_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        
+      - name: Check bug type and if RCA is filled in
+      # Uses a github action script with an API key
+        uses: actions/github-script@v7  
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          script: |
+            const reopenIssues = require('./.github/workflows/scripts/enforce_issue_RCA.js');
+            await reopenIssues({ github, context });
