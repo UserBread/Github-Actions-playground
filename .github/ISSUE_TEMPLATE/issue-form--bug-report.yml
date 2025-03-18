@@ -1,0 +1,155 @@
+name: "Issue Form: Bug Report"
+description: "Create a report to help us improve"
+title: "BUG - "
+labels: ["bug-priority:medium", "bug-status:new", "type:bug"]
+assignees:
+  - ''
+body:
+  # Source
+  - type: markdown
+    attributes:
+      value: |
+          #### Source (User Story/ TBI/ Customer case Link/ Internal incident link/ E2E/ others)
+          - Please add relevant source links to help development team identify source of the issue
+          - Please review the labels once bug is created. Double check the source labels: https://github.wdf.sap.corp/ux-engineering/tools-suite/labels?q=source
+  
+  - type: markdown
+    attributes:
+      value: |
+          #### What led you to this issue?
+  
+  - type: input
+    id: bug_source
+    attributes:
+      label: "Source(US,TBI,E2E,etc)"
+      value: "Add source link here..."
+  
+  - type: input
+    id: customer_case
+    attributes:
+      label: "Customer case"
+      value: "Add customer case link here..."
+  
+  - type: input
+    id: internal_incident
+    attributes:
+      label: "Internal incident"
+      value: "Add internal incident link here..."
+
+  # Description
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      value: "Document some details about the bug..."
+
+  # Steps to Reproduce
+  - type: textarea
+    id: reproduce_steps 
+    attributes:
+      label: Steps to reproduce
+      description: Provide clear steps to reproduce the issue.
+      value: |
+        1. Go to '...'.
+        2.
+        3.
+      render: markdown
+  
+  # Expected results
+  - type: textarea
+    id: expected_results
+    attributes:
+      label: "Expected results"
+  
+  # Actual results
+  - type: textarea
+    id: actual_results
+    attributes:
+      label: "Actual results"
+
+   # Screenshots
+  - type: textarea
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain the problem.
+      value: "Drag & drop an image here or copy-paste a screenshot."
+  
+  # Fiori component/version
+  - type: markdown
+    attributes:
+      value: |
+          #### Fiori tools component/version
+          - Run command `Fiori: Open Environment Check`, select `Gather Development Environment Information` and `View results`
+          - Please review the labels once bug is created. Double check the source labels: https://github.wdf.sap.corp/ux-engineering/tools-suite/labels?q=source
+
+  - type: textarea
+    id: fiori_component
+    attributes:
+      label: "Add fiori tools component/version"
+      value: "Copy and paste here the section 'Environment' from generated .md file"
+
+  # Project files
+  - type: textarea
+    id: project_files
+    attributes:
+      label: "Project Files"
+      description: |
+        Run command `Fiori: Archive Project`, to attach your project if you determine it will be helpful for development team.
+      render: markdown
+
+  # Operating System
+  - type: dropdown
+    id: operating_system
+    attributes:
+      label: Operating System
+      multiple: true
+      options:
+        - Mac OS
+        - Windows
+
+  # Browser
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+
+  # Environment
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      multiple: true
+      options:
+        - Master
+        - Staging
+        - Production
+  
+  # Root Cause Analysis
+  - type: markdown
+    attributes:
+      value: |
+          #### Root Cause Analysis
+
+  - type: textarea
+    id: rca_problem
+    attributes:
+      label: "Problem"
+      description: "Describe the problem"
+  
+  - type: textarea
+    id: rca_why_missed
+    attributes:
+      label: "Why was it missed?"
+      description: "Some explanation why this issue was missed during normal development/testing cycle"
+
+  - type: textarea
+    id: rca_avoid
+    attributes:
+      label: "How can we avoid this"
+      description: "If we don't want to see this type of issue anymore, what we should do to prevent it?"
