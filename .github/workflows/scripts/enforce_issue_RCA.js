@@ -45,10 +45,10 @@ module.exports = async ({ github, context }) => {
 
     // Check if placeholders still exist
     const placeholders = [
-      '{describe the problem}',
-      '{describe the fix}',
-      '{Some explanation why this issue was missed during normal development/testing cycle}',
-      '{if we don’t want to see this type of issues anymore what we should do to prevent}'
+      "{describe the problem}",
+      "{describe the fix}",
+      "{Some explanation why this issue was missed during normal development/testing cycle}",
+      "{if we don’t want to see this type of issues anymore what we should do to prevent}"
     ];
     const presentPlaceholders = placeholders.filter(placeholder => body.includes(placeholder));
     if (presentPlaceholders.length === 0) {
