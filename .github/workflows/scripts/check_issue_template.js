@@ -22,4 +22,12 @@ module.exports = async ({ github, context }) => {
     // Check Project Files
 
     // Check OS/Browser/Environment
+
+    // Create a comment
+    await github.rest.issues.createComment({
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        issue_number: issue.number,
+        body: commentBody
+      });
 }
