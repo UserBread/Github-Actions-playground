@@ -1,4 +1,4 @@
-name: Enforce Issue RCA
+name: Check Issue Template
 
 # Runs whenever an issue is closed
 on:
@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          ref: check-issue-template
         
       - name: Check bug type and if RCA is filled in
       # Uses a github action script with an API key
