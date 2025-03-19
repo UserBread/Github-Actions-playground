@@ -9,9 +9,10 @@ module.exports = async ({ github, context }) => {
         'Browser', 'Environment', 'Problem', 'Why was it missed?', 'How can we avoid this'
     ]
     // Required Root Cause Analysis Sections
-    const rca_sections = [
+    const rcaSections = [
         'Problem', 'Why was it missed?', 'How can we avoid this'
     ]
+    const highPriorityLabels = ["bug-priority:high", "bug-priority:very-high", "type:regression"];
 
     // Check all issue sections and test if a response was given
     for (let i=0; i<sections.length - 1; i++) {
@@ -23,9 +24,14 @@ module.exports = async ({ github, context }) => {
     }
 
     // Reopen issue if required RCA section is missing
-    for (let i=0; i<rca_sections.length - 1; i++) {
-        if (isBetween(issue.body, rca_sections[i], "_No response_", rca_sections[i+1])) {
-            reopenIssue = true;
+    const hasHighPriorityLabel = issue.labels.find(label =>
+        highPriorityLabels.includes(label.name.toLowerCase())
+    );
+    if (hasHighPriorityLabel) {
+        for (let i=0; i<rcaSections.length - 1; i++) {
+            if (isBetween(issue.body, rcaSections[i], "_No response_", rcaSections[i+1])) {
+                reopenIssue = true;
+            }
         }
     }
 
