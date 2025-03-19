@@ -22,8 +22,14 @@ module.exports = async ({ github, context }) => {
             commentBody += `✅ ${sections[i]} section was included with the issue.\n`
         }
     }
+    // Check last section in the list
+    if (isBetween(issue.body, sections[sections.length - 1], "_No response_")) {
+        commentBody += `❌ ${sections.length - 1} section is missing from the issue.\n`
+    } else {
+        commentBody += `✅ ${sections.length - 1} section was included with the issue.\n`
+    }
 
-    // Reopen issue if required RCA section is missing
+    // Reopen issue if required RCA section is missing for high priority issues
     const hasHighPriorityLabel = issue.labels.find(label =>
         highPriorityLabels.includes(label.name.toLowerCase())
     );
@@ -56,7 +62,12 @@ module.exports = async ({ github, context }) => {
 
 // Check if a string is between 2 others from text sample
 function isBetween(text, start, between, end) {
-    let regexStr = String.raw`${start}[\s\S]*?${between}[\s\S]*?${end}`;
+    let regexStr = "";
+    if (end === undefined) {
+        regexStr = String.raw`${start}[\s\S]*?${between}`;
+    } else {
+        regexStr = String.raw`${start}[\s\S]*?${between}[\s\S]*?${end}`;
+    }
     const regex = new RegExp(regexStr)
     return regex.test(text)
 }
