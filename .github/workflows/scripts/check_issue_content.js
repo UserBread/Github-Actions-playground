@@ -63,10 +63,10 @@ module.exports = async ({ github, context }) => {
 // Check if a string is between 2 others from text sample
 function isBetween(text, start, between, end) {
     let regexStr = "";
-    if (end === undefined) {
-        regexStr = String.raw`${start}[\s\S]*?${between}`;
-    } else {
+    if (end !== undefined) {
         regexStr = String.raw`${start}[\s\S]*?${between}[\s\S]*?${end}`;
+    } else {
+        regexStr = String.raw`${start}[\s\S]*?${between}`;
     }
     const regex = new RegExp(regexStr)
     return regex.test(text)
