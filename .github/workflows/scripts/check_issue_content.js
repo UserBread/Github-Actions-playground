@@ -2,6 +2,7 @@ module.exports = async ({ github, context }) => {
     const issue = context.payload.issue;
     let commentBody = "";
     let reopenIssue = false;
+    const placeholder = '_No response_'
     // All sections from issue form. This list must be kept up-to-date!
     const sections = [
         'Source','Customer case', 'Internal incident', 'Description', 'Steps to reproduce', 'Expected results',
@@ -16,14 +17,14 @@ module.exports = async ({ github, context }) => {
 
     // Check all issue sections and test if a response was given
     for (let i=0; i<sections.length - 1; i++) {
-        if (isBetween(issue.body, sections[i], "_No response_", sections[i+1])) {
+        if (isBetween(issue.body, sections[i], placeholder, sections[i+1])) {
             commentBody += `❌ ${sections[i]} section is missing from the issue.\n`
         } else {
             commentBody += `✅ ${sections[i]} section was included with the issue.\n`
         }
     }
     // Check last section in the list
-    if (isBetween(issue.body, sections[sections.length - 1], "_No response_")) {
+    if (isBetween(issue.body, sections[sections.length - 1], placeholder)) {
         commentBody += `❌ ${sections[sections.length - 1]} section is missing from the issue.\n`
     } else {
         commentBody += `✅ ${sections[sections.length - 1]} section was included with the issue.\n`
@@ -35,9 +36,13 @@ module.exports = async ({ github, context }) => {
     );
     if (hasHighPriorityLabel) {
         for (let i=0; i<rcaSections.length - 1; i++) {
-            if (isBetween(issue.body, rcaSections[i], "_No response_", rcaSections[i+1])) {
+            if (isBetween(issue.body, rcaSections[i], placeholder, rcaSections[i+1])) {
                 reopenIssue = true;
             }
+        }
+        // Check last RCA section in the list
+        if (isBetween(issue.body, rcaSections[rcaSections.length - 1], placeholder)) {
+            reopenIssue = true;
         }
     }
 
