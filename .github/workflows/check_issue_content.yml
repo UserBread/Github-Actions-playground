@@ -25,5 +25,5 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const reopenIssues = require('./.github/workflows/scripts/check_issue_content.js');
+            const reopenIssues = require('./.github/workflows/scripts/check_issue_content_form.js');
             await reopenIssues({ github, context });
