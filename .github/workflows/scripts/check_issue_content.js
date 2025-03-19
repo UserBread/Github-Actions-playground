@@ -24,9 +24,9 @@ module.exports = async ({ github, context }) => {
     }
     // Check last section in the list
     if (isBetween(issue.body, sections[sections.length - 1], "_No response_")) {
-        commentBody += `❌ ${sections.length - 1} section is missing from the issue.\n`
+        commentBody += `❌ ${sections[sections.length - 1]} section is missing from the issue.\n`
     } else {
-        commentBody += `✅ ${sections.length - 1} section was included with the issue.\n`
+        commentBody += `✅ ${sections[sections.length - 1]} section was included with the issue.\n`
     }
 
     // Reopen issue if required RCA section is missing for high priority issues
