@@ -21,8 +21,9 @@ body:
   - type: input
     id: bug_source
     attributes:
-      label: "Source(US,TBI,E2E,etc)"
-      value: "Add source link here..."
+      label: "Source (US,TBI,E2E,etc)"
+      placeholder: |
+        "Add source link here..."
   
   - type: input
     id: customer_case
@@ -34,14 +35,14 @@ body:
     id: internal_incident
     attributes:
       label: "Internal incident"
-      value: "Add internal incident link here..."
+      placeholder: "Add internal incident link here..."
 
   # Description
   - type: textarea
     id: description
     attributes:
       label: "Description"
-      value: "Document some details about the bug..."
+      placeholder: "Document some details about the bug..."
 
   # Steps to Reproduce
   - type: textarea
@@ -49,11 +50,10 @@ body:
     attributes:
       label: Steps to reproduce
       description: Provide clear steps to reproduce the issue.
-      value: |
+      placeholder: |
         1. Go to '...'.
         2.
         3.
-      render: markdown
   
   # Expected results
   - type: textarea
@@ -72,7 +72,7 @@ body:
     attributes:
       label: Screenshots
       description: If applicable, add screenshots to help explain the problem.
-      value: "Drag & drop an image here or copy-paste a screenshot."
+      placeholder: "Drag & drop an image here or copy-paste a screenshot."
   
   # Fiori component/version
   - type: markdown
@@ -86,7 +86,7 @@ body:
     id: fiori_component
     attributes:
       label: "Add fiori tools component/version"
-      value: "Copy and paste here the section 'Environment' from generated .md file"
+      placeholder: "Copy and paste here the section 'Environment' from generated .md file"
 
   # Project files
   - type: textarea
@@ -95,7 +95,6 @@ body:
       label: "Project Files"
       description: |
         Run command `Fiori: Archive Project`, to attach your project if you determine it will be helpful for development team.
-      render: markdown
 
   # Operating System
   - type: dropdown
