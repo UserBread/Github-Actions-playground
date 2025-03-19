@@ -29,7 +29,7 @@ body:
     id: customer_case
     attributes:
       label: "Customer case"
-      value: "Add customer case link here..."
+      placeholder: "Add customer case link here..."
   
   - type: input
     id: internal_incident
