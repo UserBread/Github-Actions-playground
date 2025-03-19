@@ -15,6 +15,8 @@ module.exports = async ({ github, context }) => {
         if (isBetween(issue.body, sections[i], "_No response_", sections[i+1])) {
             commentBody += `❌ ${sections[i]} section is missing from the issue.\n`
             reopenIssue = true;
+        } else {
+            commentBody += `✅ ${sections[i]} section was included with the issue.\n`
         }
     }
 
@@ -41,6 +43,5 @@ module.exports = async ({ github, context }) => {
 function isBetween(text, start, between, end) {
     let regexStr = String.raw`${start}[\s\S]*?${between}[\s\S]*?${end}`;
     const regex = new RegExp(regexStr)
-    console.log(regex)
     return regex.test(text)
 }
