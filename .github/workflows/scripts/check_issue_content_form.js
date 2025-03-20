@@ -30,7 +30,7 @@ module.exports = async ({ github, context }) => {
             reopenIssue = true;
         } 
 
-        commentBody += "\nPlease fill out the required sections and close the issue.";
+        commentBody += "\nPlease fill out the required sections before closing the issue.";
 
         if (reopenIssue) {
             // Reopen the issue
