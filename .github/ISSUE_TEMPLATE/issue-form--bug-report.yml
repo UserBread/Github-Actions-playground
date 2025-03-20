@@ -140,6 +140,12 @@ body:
     attributes:
       label: "Problem"
       description: "Describe the problem"
+
+  - type: textarea
+    id: rca_fix
+    attributes:
+      label: "Fix"
+      description: "Describe the fix"
   
   - type: textarea
     id: rca_why_missed
