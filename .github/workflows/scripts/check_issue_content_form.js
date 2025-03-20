@@ -14,10 +14,7 @@ module.exports = async ({ github, context }) => {
     );
 
     if (hasHighPriorityLabel) {
-        let commentBody = `
-        This issue  was reopened  because it is labelled ${hasHighPriorityLabel.name} and the following sections have not been filled out:
-
-        **Root Cause Analysis**`;
+        let commentBody = "This issue  was reopened  because it is labelled " + hasHighPriorityLabel.name + " and the following sections have not been filled out: **Root Cause Analysis**";
 
 
         // Check all issue sections and test if a response was given
