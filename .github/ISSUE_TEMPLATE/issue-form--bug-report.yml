@@ -141,8 +141,8 @@ body:
       value: |
           ##
           ### Root Cause Analysis
-          > [!NOTE]  
-          > Please check if the issue has already been reported before proceeding. This save you and colleagues time to create and handle duplicates.
+          > [!IMPORTANT]  
+          > This section is required for high-priority and regression issues.
 
   - type: textarea
     id: rca_problem
