@@ -10,12 +10,11 @@ body:
     attributes:
       value: |
           ##
-          *Note: Please check if the issue has already been reported before proceeding. This save you and colleagues time to create and handle duplicates.*
+          *Note: Please check if the issue has already been reported before proceeding. This can avoid creating and handling duplicates, saving you and your colleagues time.*
           
-          #### Source (User Story/ TBI/ Customer case Link/ Internal incident link/ E2E/ others)
-          - Please add relevant source links to help development team identify source of the issue
+          #### Source
+          - Please add a relevant source link to help development team identify source of the issue
           - Please review the labels once bug is created. Double check the source labels: https://github.wdf.sap.corp/ux-engineering/tools-suite/labels?q=source
-          ##### What led you to this issue?
 
   - type: dropdown
     id: source_type
@@ -25,17 +24,20 @@ body:
       options:
         - User Story
         - Technical Backlog Item
-        - Customer case
-        - Internal incident
-        - E2E test
+        - Customer Case
+        - Internal Tncident
+        - E2E Test
         - Other
 
   - type: input
     id: source_link
     attributes:
-      label: "Source Link"
-      placeholder: |
-        "Paste source link here..."
+      label: "Source link"
+      placeholder: "Paste source link here..."
+
+  - type: markdown
+    attributes:
+      value: "---"
 
   # Description
   - type: textarea
