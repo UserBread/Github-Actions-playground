@@ -22,17 +22,13 @@ module.exports = async ({ github, context }) => {
             if (isBetween(issue.body, sections[i], placeholder, sections[i + 1])) {
                 commentBody += `❌ **${sections[i]}** section is missing from the issue.\n`
                 reopenIssue = true;
-            } else {
-                commentBody += `✅ **${sections[i]}** section was included with the issue.\n`
             }
         }
         // Check last section in the list
         if (isBetween(issue.body, sections[sections.length - 1], placeholder)) {
             commentBody += `❌ **${sections[sections.length - 1]}** section is missing from the issue.\n`
             reopenIssue = true;
-        } else {
-            commentBody += `✅ **${sections[sections.length - 1]}** section was included with the issue.\n`
-        }
+        } 
 
         commentBody += "\nPlease fill out the required sections and close the issue.";
 
