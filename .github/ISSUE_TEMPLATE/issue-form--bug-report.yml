@@ -10,7 +10,8 @@ body:
     attributes:
       value: |
           ##
-          Please check if the issue has already been reported before proceeding. This can avoid creating and handling duplicates, saving you and your colleagues time.
+          > [!NOTE]  
+          > Please check if the issue has already been reported before proceeding. This can avoid creating and handling duplicates, saving you and your colleagues time.
           
           ### Source
           - Please add a relevant source link to help development team identify source of the issue
@@ -140,8 +141,8 @@ body:
       value: |
           ##
           ### Root Cause Analysis
-          *Note: Please check if the issue has already been reported before proceeding. This save you and colleagues time to create and handle duplicates.*
-
+          > [!NOTE]  
+          > Please check if the issue has already been reported before proceeding. This save you and colleagues time to create and handle duplicates.
 
   - type: textarea
     id: rca_problem
