@@ -18,7 +18,7 @@ body:
           ##### What led you to this issue?
 
   - type: dropdown
-    id: operating_system
+    id: source_type
     attributes:
       label: What led to this issue?
       multiple: true
@@ -31,7 +31,7 @@ body:
         - Other
 
   - type: input
-    id: bug_source
+    id: source_link
     attributes:
       label: "Source Link"
       placeholder: |
