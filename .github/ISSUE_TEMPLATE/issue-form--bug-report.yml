@@ -142,7 +142,7 @@ body:
           ##
           ### Root Cause Analysis
           > [!IMPORTANT]  
-          > This section is required for high-priority and regression issues.
+          > A root cause analysis is required for issues labelled **bug-priority:high**, **bug-priority:very-high** or **type:regression**.
 
   - type: textarea
     id: rca_problem
