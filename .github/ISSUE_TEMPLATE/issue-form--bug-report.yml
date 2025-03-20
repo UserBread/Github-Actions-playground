@@ -9,33 +9,33 @@ body:
   - type: markdown
     attributes:
       value: |
+          ##
+          *Note: Please check if the issue has already been reported before proceeding. This save you and colleagues time to create and handle duplicates.*
+          
           #### Source (User Story/ TBI/ Customer case Link/ Internal incident link/ E2E/ others)
           - Please add relevant source links to help development team identify source of the issue
           - Please review the labels once bug is created. Double check the source labels: https://github.wdf.sap.corp/ux-engineering/tools-suite/labels?q=source
-  
-  - type: markdown
+          ##### What led you to this issue?
+
+  - type: dropdown
+    id: operating_system
     attributes:
-      value: |
-          #### What led you to this issue?
-  
+      label: What led to this issue?
+      multiple: true
+      options:
+        - User Story
+        - Technical Backlog Item
+        - Customer case
+        - Internal incident
+        - E2E test
+        - Other
+
   - type: input
     id: bug_source
     attributes:
-      label: "Source (US,TBI,E2E,etc)"
+      label: "Source Link"
       placeholder: |
-        "Add source link here..."
-  
-  - type: input
-    id: customer_case
-    attributes:
-      label: "Customer case"
-      placeholder: "Add customer case link here..."
-  
-  - type: input
-    id: internal_incident
-    attributes:
-      label: "Internal incident"
-      placeholder: "Add internal incident link here..."
+        "Paste source link here..."
 
   # Description
   - type: textarea
@@ -78,11 +78,12 @@ body:
   - type: markdown
     attributes:
       value: |
+          ##
           #### Fiori tools component/version
           - Run command `Fiori: Open Environment Check`, select `Gather Development Environment Information` and `View results`
           - Please review the labels once bug is created. Double check the source labels: https://github.wdf.sap.corp/ux-engineering/tools-suite/labels?q=source
 
-  - type: textarea
+  - type: input
     id: fiori_component
     attributes:
       label: "Add fiori tools component/version"
@@ -134,6 +135,8 @@ body:
     attributes:
       value: |
           #### Root Cause Analysis
+          *Note: Please check if the issue has already been reported before proceeding. This save you and colleagues time to create and handle duplicates.*
+
 
   - type: textarea
     id: rca_problem
