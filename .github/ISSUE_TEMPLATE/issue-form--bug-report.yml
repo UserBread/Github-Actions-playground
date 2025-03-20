@@ -10,9 +10,9 @@ body:
     attributes:
       value: |
           ##
-          *Note: Please check if the issue has already been reported before proceeding. This can avoid creating and handling duplicates, saving you and your colleagues time.*
+          Please check if the issue has already been reported before proceeding. This can avoid creating and handling duplicates, saving you and your colleagues time.
           
-          #### Source
+          ### Source
           - Please add a relevant source link to help development team identify source of the issue
           - Please review the labels once bug is created. Double check the source labels: https://github.wdf.sap.corp/ux-engineering/tools-suite/labels?q=source
 
@@ -37,7 +37,9 @@ body:
 
   - type: markdown
     attributes:
-      value: "---"
+      value: |
+          ##
+          ### Issue Details
 
   # Description
   - type: textarea
@@ -136,7 +138,8 @@ body:
   - type: markdown
     attributes:
       value: |
-          #### Root Cause Analysis
+          ##
+          ### Root Cause Analysis
           *Note: Please check if the issue has already been reported before proceeding. This save you and colleagues time to create and handle duplicates.*
 
 
