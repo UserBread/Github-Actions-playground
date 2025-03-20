@@ -1,7 +1,7 @@
 module.exports = async ({ github, context }) => {
-    const issue = context.payload.issue;   
+    const issue = context.payload.issue;
     let reopenIssue = false;
-    const placeholder = '_No response_'
+    const placeholder = '_No response_';
     // All sections from issue form. This list must be kept up-to-date!
     const sections = [
         'Problem', 'Fix', 'Why was it missed?', 'How can we avoid this'
@@ -13,46 +13,49 @@ module.exports = async ({ github, context }) => {
         highPriorityLabels.includes(label.name.toLowerCase())
     );
 
-    let commentBody = `
-    This issue  was reopened  because it is labelled ${hasHighPriorityLabel.name} and the following sections have not been filled out:
+    if (hasHighPriorityLabel) {
+        let commentBody = `
+        This issue  was reopened  because it is labelled ${hasHighPriorityLabel.name} and the following sections have not been filled out:
 
-    **Root Cause Analysis**`;
+        **Root Cause Analysis**`;
 
-    // Check all issue sections and test if a response was given
-    for (let i=0; i<sections.length - 1; i++) {
-        if (isBetween(issue.body, sections[i], placeholder, sections[i+1])) {
-            commentBody += `❌ **${sections[i]}** section is missing from the issue.\n`
+
+        // Check all issue sections and test if a response was given
+        for (let i = 0; i < sections.length - 1; i++) {
+            if (isBetween(issue.body, sections[i], placeholder, sections[i + 1])) {
+                commentBody += `❌ **${sections[i]}** section is missing from the issue.\n`
+                reopenIssue = true;
+            } else {
+                commentBody += `✅ **${sections[i]}** section was included with the issue.\n`
+            }
+        }
+        // Check last section in the list
+        if (isBetween(issue.body, sections[sections.length - 1], placeholder)) {
+            commentBody += `❌ **${sections[sections.length - 1]}** section is missing from the issue.\n`
             reopenIssue = true;
         } else {
-            commentBody += `✅ **${sections[i]}** section was included with the issue.\n`
+            commentBody += `✅ **${sections[sections.length - 1]}** section was included with the issue.\n`
         }
-    }
-    // Check last section in the list
-    if (isBetween(issue.body, sections[sections.length - 1], placeholder)) {
-        commentBody += `❌ **${sections[sections.length - 1]}** section is missing from the issue.\n`
-        reopenIssue = true;
-    } else {
-        commentBody += `✅ **${sections[sections.length - 1]}** section was included with the issue.\n`
-    }
 
-    commentBody += "\nPlease fill out the required sections and close the issue.";
+        commentBody += "\nPlease fill out the required sections and close the issue.";
 
-    if (reopenIssue && hasHighPriorityLabel) {
-        // Reopen the issue
-        await github.rest.issues.update({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            issue_number: issue.number,
-            state: "open"
-        });
-        
-        // Add a comment explaining why it was reopened
-        await github.rest.issues.createComment({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            issue_number: issue.number,
-            body: commentBody
-        });
+        if (reopenIssue) {
+            // Reopen the issue
+            await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                state: "open"
+            });
+
+            // Add a comment explaining why it was reopened
+            await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: commentBody
+            });
+        }
     }
 }
 
