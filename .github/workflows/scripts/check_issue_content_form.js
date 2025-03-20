@@ -14,7 +14,7 @@ module.exports = async ({ github, context }) => {
     );
 
     let commentBody = `
-    This issue  was reopened  because it is labelled ${label} and the following sections have not been filled out:
+    This issue  was reopened  because it is labelled ${hasHighPriorityLabel.name} and the following sections have not been filled out:
 
     **Root Cause Analysis**`;
 
